@@ -1,73 +1,70 @@
-# React + TypeScript + Vite
+# User Onboarding Flow Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple multi-step user onboarding flow built using **React**, **Redux**, **Ant Design**, **Formik**, and **TypeScript**.  
+The app demonstrates login authentication and a step-by-step form process.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Deployment Link
 
-## React Compiler
+**Live Demo:** https://dancing-axolotl-822904.netlify.app
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React**
+- **Redux**
+- **Ant Design**
+- **Formik**
+- **TypeScript**
+- **Vite**
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Application Flow
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. **Login Page**
+   - Credentials:
+     - **Username:** `user123`
+     - **Password:** `password123`
+   - After login success → Redirect to onboarding steps.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Onboarding Steps**
+   - **Step 1:** Profile Details
+   - **Step 2:** Add Songs
+   - **Step 3:** Add Payment Details
+   - **Step 4:** Successful Onboarding
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3. **Home Page**
+   - Displays **Welcome message**
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## Folder Structure
+
+```bash
+src
+│-- main.tsx
+│-- App.tsx
+│-- store.ts
+│-- utils.ts
+│-- types.ts
+│
+├── redux
+│   ├── authSlice.ts
+│   └── onboardingSlice.ts
+│
+├── pages
+│   ├── LoginPage.tsx
+│   ├── Onboarding.tsx
+│   └── Home.tsx
+│
+└── components
+    ├── Step1Profile.tsx
+    ├── Step2Songs.tsx
+    ├── Step3Payment.tsx
+    ├── Step4Success.tsx
+    ├── CardContainer.tsx
+    └── NavBar.tsx
 ```
