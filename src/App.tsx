@@ -9,7 +9,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 function App() {
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const completed = useSelector((state: RootState) => state.onboarding.completed);
-  console.log("App Component - isLoggedIn:", isLoggedIn, "completed:", completed, completed && isLoggedIn);
 
   return (
     <>

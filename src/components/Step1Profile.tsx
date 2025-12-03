@@ -32,8 +32,6 @@ const Step1Profile: React.FC<{ onNext: () => void }> = ({ onNext }) => {
     }
   }, [profile, form]);
 
-  console.log("Step1Profile Component - profile:", profile);
-
   useEffect(() => {
     if (profile.picture?.url) {
       setFileList([

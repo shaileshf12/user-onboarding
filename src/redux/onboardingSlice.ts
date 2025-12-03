@@ -1,18 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { Profile } from "../types";
-
-type Payment = { cardNumber?: string; expiry?: string; cvv?: string };
-
-type OnboardingState = {
-  currentStep: number;
-  completed: boolean;
-  profile: Profile;
-  songs: string[];
-  payment: Payment;
-};
+import type { Profile, Payment, OnboardingState } from "../types";
 
 const persisted = localStorage.getItem("onboarding");
-console.log("Onboarding Slice - Persisted State:", persisted);
 const initialState: OnboardingState = persisted
   ? JSON.parse(persisted)
   : {

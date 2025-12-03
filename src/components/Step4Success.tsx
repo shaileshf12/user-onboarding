@@ -5,7 +5,7 @@ import CardContainer from "./CardContainer";
 import { useDispatch } from "react-redux";
 import { complete } from "../redux/onboardingSlice";
 
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 const Step4Success: React.FC = () => {
   const dispatch = useDispatch();
@@ -39,9 +39,7 @@ const Step4Success: React.FC = () => {
 
   return (
     <CardContainer>
-      <Title level={3} style={{ color: "green", marginBottom: 8 }}>
-        Onboarding Complete!
-      </Title>
+      <h2 style={{ color: "green", textAlign: "center", marginBottom: 20 }}>Payment Information</h2>
 
       <div style={{ marginTop: 48 }}>
         <Progress type="line" percent={Math.round(percent)} strokeWidth={12} showInfo={true} />

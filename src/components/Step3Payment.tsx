@@ -4,6 +4,7 @@ import { setPayment, goToStep } from "../redux/onboardingSlice";
 import type { RootState } from "../store";
 import { Form, Input, Button } from "antd";
 import CardContainer from "./CardContainer";
+import type { Payment } from "../types";
 
 const Step3Payment: React.FC<{ onPrev?: () => void; onNext?: () => void }> = ({ onPrev, onNext }) => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const Step3Payment: React.FC<{ onPrev?: () => void; onNext?: () => void }> = ({ 
     form.setFieldsValue(payment);
   }, [payment, form]);
 
-  const handleFinish = (values: { cardNumber: string; expiry: string; cvv: string }) => {
+  const handleFinish = (values: Payment) => {
     dispatch(setPayment(values));
     onNext?.();
   };
