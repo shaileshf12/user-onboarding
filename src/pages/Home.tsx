@@ -8,12 +8,23 @@ import { logout } from "../redux/authSlice";
 
 const { Title, Text } = Typography;
 
-interface HomeProps {
-  name?: string;
-  imageUrl?: string;
-}
+const styles = {
+  navRight: { display: "flex", justifyContent: "flex-end", padding: 24 },
+  page: {
+    minHeight: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column" as const,
+    padding: "24px",
+    boxSizing: "border-box" as const,
+  },
+  avatar: { marginBottom: 16 },
+  title: { marginBottom: 20 },
+  subtitle: { fontSize: 16 },
+};
 
-const Home: React.FC<HomeProps> = ({ name, imageUrl }) => {
+const Home: React.FC = () => {
   const profile = useSelector((state: RootState) => state.onboarding.profile);
   const dispatch = useDispatch();
 
@@ -24,30 +35,20 @@ const Home: React.FC<HomeProps> = ({ name, imageUrl }) => {
   return (
     <>
       <NavBar>
-        <div style={{ display: "flex", justifyContent: "flex-end", padding: 25 }}>
+        <div style={styles.navRight}>
           <Button type="primary" onClick={handleLogout}>
             Logout
           </Button>
         </div>
       </NavBar>
-      <div
-        style={{
-          minHeight: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
-      >
-        <Avatar size={120} src={profile.picture?.url} style={{ marginBottom: 16 }}>
-          {!imageUrl && name?.charAt(0)}
-        </Avatar>
+      <div style={styles.page}>
+        <Avatar size={120} src={profile.picture?.url} style={styles.avatar} />
 
-        <Title level={3} style={{ marginBottom: 20 }}>
+        <Title level={3} style={styles.title}>
           Hello, {profile.name}
         </Title>
 
-        <Text type="secondary" style={{ fontSize: 16 }}>
+        <Text type="secondary" style={styles.subtitle}>
           Welcome to the Home Page
         </Text>
       </div>

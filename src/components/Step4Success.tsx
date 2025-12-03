@@ -7,6 +7,20 @@ import { complete } from "../redux/onboardingSlice";
 
 const { Text } = Typography;
 
+const styles = {
+  wrapper: {
+    marginTop: 48,
+  },
+  title: {
+    textAlign: "center" as const,
+    marginBottom: 20,
+    color: "green",
+  },
+  subwrapper: {
+    marginTop: 12,
+  },
+};
+
 const Step4Success: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,11 +53,11 @@ const Step4Success: React.FC = () => {
 
   return (
     <CardContainer>
-      <h2 style={{ color: "green", textAlign: "center", marginBottom: 20 }}>Payment Information</h2>
+      <h2 style={styles.title}>Onborading completed successfully</h2>
 
-      <div style={{ marginTop: 48 }}>
+      <div style={styles.wrapper}>
         <Progress type="line" percent={Math.round(percent)} strokeWidth={12} showInfo={true} />
-        <div style={{ marginTop: 12 }}>
+        <div style={styles.subwrapper}>
           <Text type="secondary">Redirecting to home page.</Text>
         </div>
       </div>

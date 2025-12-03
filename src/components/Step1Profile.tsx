@@ -7,13 +7,26 @@ import CardContainer from "./CardContainer";
 import { useSelector } from "react-redux";
 import type { RootState } from "../store";
 import { getBase64 } from "../utils";
-
 interface OnboardingFormValues {
   name: string;
   age: number;
   email: string;
   profilePicture?: UploadFile;
 }
+
+const styles = {
+  wrapper: {
+    width: 400,
+  },
+  title: {
+    textAlign: "center" as const,
+    marginBottom: 20,
+  },
+  submitBtn: {
+    width: "100%",
+    marginTop: 10,
+  },
+};
 
 const Step1Profile: React.FC<{ onNext: () => void }> = ({ onNext }) => {
   const dispatch = useDispatch();
@@ -78,8 +91,8 @@ const Step1Profile: React.FC<{ onNext: () => void }> = ({ onNext }) => {
 
   return (
     <CardContainer>
-      <div style={{ width: 400 }}>
-        <h2 style={{ textAlign: "center", marginBottom: 20 }}>Personal Profile</h2>
+      <div style={styles.wrapper}>
+        <h2 style={styles.title}>Personal Profile</h2>
 
         <Form form={form} layout="vertical" onFinish={handleFinish}>
           <Form.Item name="name" label="Full Name" rules={[{ required: true, message: "Please enter your name" }]}>
@@ -124,7 +137,7 @@ const Step1Profile: React.FC<{ onNext: () => void }> = ({ onNext }) => {
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" size="large" style={{ width: "100%", marginTop: 10 }}>
+            <Button type="primary" htmlType="submit" size="large" style={styles.submitBtn}>
               Submit
             </Button>
           </Form.Item>

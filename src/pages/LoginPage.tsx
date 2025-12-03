@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Form, Input, Button, message } from "antd";
+import { Form, Input, Button, message, Typography } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import type { User } from "../types";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +8,13 @@ import type { RootState } from "../store";
 import { useNavigate } from "react-router-dom";
 import CardContainer from "../components/CardContainer";
 
+const { Title } = Typography;
+
+const styles = {
+  wrapper: { width: 400 },
+  title: { textAlign: "center" as const, marginBottom: 20 },
+};
+
 const LoginCard: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -15,11 +22,8 @@ const LoginCard: React.FC = () => {
   const completed = useSelector((state: RootState) => state.onboarding.completed);
 
   useEffect(() => {
-    if (completed && isLoggedIn) {
-      navigate("/home", { replace: true });
-    } else if (isLoggedIn) {
-      navigate("/onboarding", { replace: true });
-    }
+    if (completed && isLoggedIn) navigate("/home", { replace: true });
+    else if (isLoggedIn) navigate("/onboarding", { replace: true });
   }, [isLoggedIn, navigate, completed]);
 
   const onFinish = (values: User) => {
@@ -32,8 +36,11 @@ const LoginCard: React.FC = () => {
 
   return (
     <CardContainer width={500} height={400}>
-      <div style={{ width: 400 }}>
-        <h2 style={{ textAlign: "center", marginBottom: 20 }}>Login</h2>
+      <div style={styles.wrapper}>
+        <Title level={3} style={styles.title}>
+          Login
+        </Title>
+
         <Form name="loginForm" layout="vertical" onFinish={onFinish}>
           <Form.Item label="Username" name="username" rules={[{ required: true, message: "Please enter your username" }]}>
             <Input prefix={<UserOutlined />} placeholder="Enter username" />

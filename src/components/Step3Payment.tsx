@@ -6,6 +6,16 @@ import { Form, Input, Button } from "antd";
 import CardContainer from "./CardContainer";
 import type { Payment } from "../types";
 
+const styles = {
+    wrapper: {
+        width: 400,
+    },
+    title: {
+        textAlign: "center" as const,
+        marginBottom: 20,
+    }
+}
+
 const Step3Payment: React.FC<{ onPrev?: () => void; onNext?: () => void }> = ({ onPrev, onNext }) => {
   const dispatch = useDispatch();
   const payment = useSelector((s: RootState) => s.onboarding.payment);
@@ -23,8 +33,8 @@ const Step3Payment: React.FC<{ onPrev?: () => void; onNext?: () => void }> = ({ 
 
   return (
     <CardContainer>
-      <div style={{ width: 400 }}>
-        <h2 style={{ textAlign: "center", marginBottom: 20 }}>Payment Information</h2>
+      <div style={styles.wrapper}>
+        <h2 style={styles.title}>Payment Information</h2>
         <Form form={form} layout="vertical" initialValues={payment} onFinish={handleFinish}>
           <Form.Item label="Card Number" name="cardNumber" rules={[{ required: true, message: "Card number is required" }]}>
             <Input maxLength={16} placeholder="Enter card number" />
